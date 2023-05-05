@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ -f "/init/settings.js" ]]; then
-    cp /init/settings.js /data/settings.js
+    cp /init/settings.js /data/settings.js || true
 fi
 
 if [[ -f "/init/packages.txt" ]]; then
