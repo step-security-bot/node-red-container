@@ -47,3 +47,4 @@ jobs:
         with:
           container: ${{ matrix.container }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          build: true
