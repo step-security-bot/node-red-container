@@ -44,7 +44,7 @@ runs:
         echo "NODE_RED_VERSION=${VERSION_FILE%%*( )}" >> $GITHUB_ENV
 
     - name: Versioning and Changelog
-      if: inputs.push
+      if: inputs.push == 'true'
       working-directory: containers/${{ inputs.container }}
       shell: bash
       run: |
@@ -60,7 +60,7 @@ runs:
         echo "TAG_NAME=${TAG_NAME#"container/${{ inputs.container }}/v"}" >> $GITHUB_ENV
 
     - name: Push Git Tag
-      if: inputs.push
+      if: inputs.push == 'true'
       shell: bash
       run: |
         git push --follow-tags origin ${{ github.ref_name }}
@@ -83,7 +83,7 @@ runs:
           CI_COMMIT_TAG=${{ env.TAG_NAME }}
 
     - name: GitHub Release
-      if: inputs.push
+      if: inputs.push == 'true'
       uses: ncipollo/release-action@v1
       with:
         bodyFile: release-CHANGELOG.md
