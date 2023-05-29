@@ -18,6 +18,7 @@ jobs:
     name: Build (and Push) Container Image
     permissions:
       contents: write
+      packages: write
     strategy:
       fail-fast: true
       max-parallel: 1
