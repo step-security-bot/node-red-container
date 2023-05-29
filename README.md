@@ -3,7 +3,6 @@
 [![](https://img.shields.io/github/license/muhlba91/node-red-container?style=for-the-badge)](LICENSE)
 [![](https://img.shields.io/github/actions/workflow/status/muhlba91/node-red-container/release.yml?style=for-the-badge)](https://github.com/muhlba91/node-red-container/actions/workflows/release.yml)
 [![](https://img.shields.io/github/release-date/muhlba91/node-red-container?style=for-the-badge)](https://github.com/muhlba91/node-red-container/releases)
-[![](https://quay.io/repository/muhlba91/node-red/status)](https://quay.io/repository/muhlba91/node-red)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
 
 An opinionated containerized version of [Node-RED](https://nodered.org).
