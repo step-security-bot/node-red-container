@@ -1,6 +1,8 @@
 # Changelog
 
 
+### [1.0.6](https://github.com/muhlba91/node-red-container/compare/container/node-red/v1.0.5...container/node-red/v1.0.6) (2023-05-29)
+
 ### [1.0.5](https://github.com/muhlba91/node-red-container/compare/container/node-red/v1.0.4...container/node-red/v1.0.5) (2023-05-29)
 
 ### [1.0.4](https://github.com/muhlba91/node-red-container/compare/container/node-red/v1.0.3...container/node-red/v1.0.4) (2023-05-05)
