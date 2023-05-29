@@ -73,7 +73,7 @@ runs:
         platforms: linux/amd64
         push: ${{ inputs.push }}
         tags: |
-          ghcr.io/muhlba91/${{ github.repository }}:${{ env.NODE_RED_VERSION }}
+          ghcr.io/muhlba91/${{ inputs.container }}:${{ env.NODE_RED_VERSION }}
           ghcr.io/muhlba91/${{ inputs.container }}:${{ env.NODE_RED_VERSION }}-${{ env.TAG_NAME }}
           ghcr.io/muhlba91/${{ inputs.container }}:${{ github.sha }}
         build-args: |
