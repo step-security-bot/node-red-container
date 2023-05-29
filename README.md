@@ -1,7 +1,7 @@
 # Node-RED Container
 
 [![](https://img.shields.io/github/license/muhlba91/node-red-container?style=for-the-badge)](LICENSE)
-[![](https://img.shields.io/github/workflow/status/muhlba91/node-red-container/Container?style=for-the-badge)](https://github.com/muhlba91/node-red-container/actions)
+[![](https://img.shields.io/github/actions/workflow/status/muhlba91/node-red-container/release.yml?style=for-the-badge)](https://github.com/muhlba91/node-red-container/actions/workflows/release.yml)
 [![](https://img.shields.io/github/release-date/muhlba91/node-red-container?style=for-the-badge)](https://github.com/muhlba91/node-red-container/releases)
 [![](https://quay.io/repository/muhlba91/node-red/status)](https://quay.io/repository/muhlba91/node-red)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
@@ -18,16 +18,16 @@ Create your Node-RED configuration files locally and start the container:
 $ docker run --name node-red \
   --network host \
   -v ${PWD}/config:/data \
-  quay.io/muhlba91/node-red:<TAG>
+  ghcr.io/muhlba91/node-red:<TAG>
 ```
 
 ### Container Tags
 
 The container images are tagged according to:
 
-1. the Node-RED version (`quay.io/muhlba91/node-red:<NODE_RED_VERSION>`) - **Note:** this tag will be re-used on every release with the same Node-RED version!
-2. the Node-RED version and current release (`quay.io/muhlba91/node-red:<NODE_RED_VERSION>-<RELEASE>`)
-3. the Git Commit SHA (`quay.io/muhlba91/node-red:<GIT_COMMIT_SHA>`)
+1. the Node-RED version (`ghcr.io/muhlba91/node-red:<NODE_RED_VERSION>`) - **Note:** this tag will be re-used on every release with the same Node-RED version!
+2. the Node-RED version and current release (`ghcr.io/muhlba91/node-red:<NODE_RED_VERSION>-<RELEASE>`)
+3. the Git Commit SHA (`ghcr.io/muhlba91/node-red:<GIT_COMMIT_SHA>`)
 
 ### Helm Chart
 

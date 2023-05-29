@@ -1,5 +1,5 @@
 ---
-name: Container
+name: Release
 
 on:
   pull_request:
@@ -10,46 +10,14 @@ on:
       - '*'
     paths:
       - 'containers/**'
+  workflow_dispatch:
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    name: Lint
-    strategy:
-      fail-fast: true
-      max-parallel: 4
-      matrix:
-        container:
-          - node-red
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Detect Change
-        uses: dorny/paths-filter@v2
-        id: detect-change
-        with:
-          filters: |
-            changed:
-              - 'containers/${{ matrix.container }}/**'
-              - 'containers/NODE_RED_VERSION'
-
-      - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@v2.0.0
-        with:
-          dockerfile: containers/${{ matrix.container }}/Dockerfile
-          config: containers/.hadolint.yml
-
-  container:
+  release:
     runs-on: ubuntu-latest
     name: Build (and Push) Container Image
     permissions:
       contents: write
-    needs:
-      - lint
     strategy:
       fail-fast: true
       max-parallel: 1
@@ -79,5 +47,3 @@ jobs:
         with:
           container: ${{ matrix.container }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          registryUsername: ${{ secrets.REGISTRY_USERNAME }}
-          registryPassword: ${{ secrets.REGISTRY_PASSWORD }}
