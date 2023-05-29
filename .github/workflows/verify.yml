@@ -64,9 +64,8 @@ jobs:
 
       - name: Build ${{ matrix.container }}
         id: image
-        if: steps.detect-change.outputs.changed == 'true'
         uses: ./.github/actions/container
         with:
           container: ${{ matrix.container }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          build: false
+          push: false

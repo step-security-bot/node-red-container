@@ -32,19 +32,10 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Detect Change
-        uses: dorny/paths-filter@v2
-        id: detect-change
-        with:
-          filters: |
-            changed:
-              - 'containers/${{ matrix.container }}/**'
-
       - name: Build (and Push) ${{ matrix.container }}
         id: image
-        if: steps.detect-change.outputs.changed == 'true'
         uses: ./.github/actions/container
         with:
           container: ${{ matrix.container }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          build: true
+          push: true

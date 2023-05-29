@@ -8,7 +8,7 @@ inputs:
   token:
     description: GitHub Token with contents write permissions
     required: true
-  build:
+  push:
     description: GitHub Token with contents write permissions
     required: true
 outputs:
@@ -44,7 +44,7 @@ runs:
         echo "NODE_RED_VERSION=${VERSION_FILE%%*( )}" >> $GITHUB_ENV
 
     - name: Versioning and Changelog
-      if: inputs.build
+      if: inputs.push
       working-directory: containers/${{ inputs.container }}
       shell: bash
       run: |
@@ -60,7 +60,7 @@ runs:
         echo "TAG_NAME=${TAG_NAME#"container/${{ inputs.container }}/v"}" >> $GITHUB_ENV
 
     - name: Push Git Tag
-      if: inputs.build
+      if: inputs.push
       shell: bash
       run: |
         git push --follow-tags origin ${{ github.ref_name }}
@@ -71,7 +71,7 @@ runs:
       with:
         context: containers/${{ inputs.container }}
         platforms: linux/amd64
-        push: ${{ inputs.build }}
+        push: ${{ inputs.push }}
         tags: |
           ghcr.io/muhlba91/${{ github.repository }}:${{ env.NODE_RED_VERSION }}
           ghcr.io/muhlba91/${{ inputs.container }}:${{ env.NODE_RED_VERSION }}-${{ env.TAG_NAME }}
@@ -83,7 +83,7 @@ runs:
           CI_COMMIT_TAG=${{ env.TAG_NAME }}
 
     - name: GitHub Release
-      if: inputs.build
+      if: inputs.push
       uses: ncipollo/release-action@v1
       with:
         bodyFile: release-CHANGELOG.md
