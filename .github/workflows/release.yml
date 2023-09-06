@@ -2,29 +2,40 @@
 name: Release
 
 on:
-  pull_request:
-    paths:
-      - 'containers/**'
   push:
     branches:
-      - '*'
-    paths:
-      - 'containers/**'
-  workflow_dispatch:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    name: Release
+    outputs:
+      release_created: ${{ steps.release.outputs.releases_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          command: manifest
+
+  container:
+    if: needs.release.outputs.release_created
+    runs-on: ubuntu-latest
     name: Build (and Push) Container Image
+    needs:
+      - release
     permissions:
       contents: write
       packages: write
-    strategy:
-      fail-fast: true
-      max-parallel: 1
-      matrix:
-        container:
-          - node-red
 
     steps:
       - name: Checkout repository
@@ -33,10 +44,24 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build (and Push) ${{ matrix.container }}
-        id: image
-        uses: ./.github/actions/container
+      - name: Login to ghcr.io
+        uses: docker/login-action@v2
         with:
-          container: ${{ matrix.container }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and Push Image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
           push: true
+          tags: |
+            ghcr.io/muhlba91/node-red:latest
+            ghcr.io/muhlba91/node-red:${{ github.sha }}
+            ghcr.io/muhlba91/node-red:${{ needs.release.outputs.tag_name }}
+          build-args: |
+            CI_COMMIT_TIMESTAMP=${{ github.event.repository.updated_at }}
+            CI_COMMIT_SHA=${{ github.sha }}
+            CI_COMMIT_TAG=${{ needs.release.outputs.tag_name }}

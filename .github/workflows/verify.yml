@@ -2,50 +2,44 @@
 name: Verify
 
 on:
-  pull_request:
   push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 jobs:
+  conform:
+    runs-on: ubuntu-latest
+    name: Conform
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: siderolabs/conform@v0.1.0-alpha.27
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
   lint:
     runs-on: ubuntu-latest
-    name: Lint
-    strategy:
-      fail-fast: true
-      max-parallel: 4
-      matrix:
-        container:
-          - node-red
+    name: Lint Dockerfile
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
         with:
           fetch-depth: 0
-
-      - name: Detect Change
-        uses: dorny/paths-filter@v2
-        id: detect-change
-        with:
-          filters: |
-            changed:
-              - 'containers/${{ matrix.container }}/**'
-              - 'containers/NODE_RED_VERSION'
 
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: containers/${{ matrix.container }}/Dockerfile
-          config: containers/.hadolint.yml
+          dockerfile: Dockerfile
 
   container:
     runs-on: ubuntu-latest
     name: Build Container Image
-    strategy:
-      fail-fast: true
-      max-parallel: 1
-      matrix:
-        container:
-          - node-red
 
     steps:
       - name: Checkout repository
@@ -54,18 +48,21 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Detect Change
-        uses: dorny/paths-filter@v2
-        id: detect-change
-        with:
-          filters: |
-            changed:
-              - 'containers/${{ matrix.container }}/**'
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-      - name: Build ${{ matrix.container }}
-        id: image
-        uses: ./.github/actions/container
+      - name: Build Image
+        uses: docker/build-push-action@v4
         with:
-          container: ${{ matrix.container }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          context: .
+          platforms: linux/amd64,linux/arm64
           push: false
+          tags: |
+            ghcr.io/muhlba91/node-red:latest
+            ghcr.io/muhlba91/node-red:${{ github.sha }}
+          build-args: |
+            CI_COMMIT_TIMESTAMP=${{ github.event.repository.updated_at }}
+            CI_COMMIT_SHA=${{ github.sha }}
+            CI_COMMIT_TAG=latest
