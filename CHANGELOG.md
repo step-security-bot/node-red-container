@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [2.0.1](https://github.com/muhlba91/node-red-container/compare/v2.0.0...v2.0.1) (2023-10-08)
+
+
+### Bug Fixes
+
+* **ci:** fix docker buildx installation in release pipeline ([4d212d0](https://github.com/muhlba91/node-red-container/commit/4d212d01a48fb856d2295f1f1e417d7f665823d3))
+
 ## [2.0.0](https://github.com/muhlba91/node-red-container/compare/v1.0.8...v2.0.0) (2023-10-08)
 
 
