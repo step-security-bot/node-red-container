@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [4.0.0](https://github.com/muhlba91/node-red-container/compare/v2.0.1...v4.0.0) (2023-10-08)
+
+
+### Miscellaneous Chores
+
+* set release version to 4.0.0 ([326fb62](https://github.com/muhlba91/node-red-container/commit/326fb62fb73192a17244402ef1c477ab88703924))
+
 ## [2.0.1](https://github.com/muhlba91/node-red-container/compare/v2.0.0...v2.0.1) (2023-10-08)
 
 
