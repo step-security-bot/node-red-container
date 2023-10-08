@@ -2,6 +2,7 @@
 
 [![](https://img.shields.io/github/license/muhlba91/node-red-container?style=for-the-badge)](LICENSE)
 [![](https://img.shields.io/github/actions/workflow/status/muhlba91/node-red-container/release.yml?style=for-the-badge)](https://github.com/muhlba91/node-red-container/actions/workflows/release.yml)
+[![](https://img.shields.io/github/v/tag/muhlba91/node-red-container?style=for-the-badge)](https://github.com/muhlba91/node-red-container/releases)
 [![](https://img.shields.io/github/release-date/muhlba91/node-red-container?style=for-the-badge)](https://github.com/muhlba91/node-red-container/releases)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
 
@@ -24,13 +25,12 @@ $ docker run --name node-red \
 
 The container images are tagged according to:
 
-1. the Node-RED version (`ghcr.io/muhlba91/node-red:<NODE_RED_VERSION>`) - **Note:** this tag will be re-used on every release with the same Node-RED version!
-2. the Node-RED version and current release (`ghcr.io/muhlba91/node-red:<NODE_RED_VERSION>-<RELEASE>`)
-3. the Git Commit SHA (`ghcr.io/muhlba91/node-red:<GIT_COMMIT_SHA>`)
+1. the Node-RED version and current release (`ghcr.io/muhlba91/node-red:<RELEASE_TAG>`)
+2. the Git Commit SHA (`ghcr.io/muhlba91/node-red:<GIT_COMMIT_SHA>`)
 
 ### Helm Chart
 
-The [k8s-at-home chart for Node-RED](https://github.com/k8s-at-home/charts/tree/master/charts/stable/node-red) is the recommended chart to use this container with.
+The [app-template by bjw-s](https://github.com/bjw-s/helm-charts/tree/main/charts/other/app-template) is the recommended chart to use this container with.
 
 For example, to mount a `packages.txt` file from a ConfigMap you can add the folloiwng block to your `values.yaml` file:
 
@@ -38,12 +38,10 @@ For example, to mount a `packages.txt` file from a ConfigMap you can add the fol
 persistence:
   packages:
     enabled: true
-    type: custom
-    mountPath: /init/packages.txt
-    subPath: /init/packages.txt
-    volumeSpec:
-      configMap:
-        name: packages-configmap
+    type: configMap
+    name: node-red-packages-config
+    globalMounts:
+      - path: /init
 ```
 
 ---
