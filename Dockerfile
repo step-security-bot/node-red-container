@@ -1,4 +1,4 @@
-FROM nodered/node-red:3.1.0
+FROM nodered/node-red:3.1.1
 
 ARG CI_COMMIT_TIMESTAMP
 ARG CI_COMMIT_SHA
