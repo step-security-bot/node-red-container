@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [4.0.1](https://github.com/muhlba91/node-red-container/compare/v4.0.0...v4.0.1) (2024-02-06)
+
+
+### Miscellaneous Chores
+
+* **ci:** adopt release please for v4 ([014fd2f](https://github.com/muhlba91/node-red-container/commit/014fd2f74d2f8176987b6446d4379ab36d255fae))
+* **deps:** update actions/checkout digest to b4ffde6 ([a40f337](https://github.com/muhlba91/node-red-container/commit/a40f337b6e9f5b94d8181c1964f5b31c19bab2ce))
+* **deps:** update google-github-actions/release-please-action action to v4 ([0898734](https://github.com/muhlba91/node-red-container/commit/08987341d65fdcb2b1d79120bd36fcf23c3476f6))
+* **deps:** update nodered/node-red docker tag to v3.1.1 ([87367f9](https://github.com/muhlba91/node-red-container/commit/87367f9b9c263577264397268f6ac16b5b55a0e9))
+* **deps:** update nodered/node-red docker tag to v3.1.2 ([f7673c0](https://github.com/muhlba91/node-red-container/commit/f7673c0c3eb22289669c5e187d2671ece022a9d5))
+* **deps:** update nodered/node-red docker tag to v3.1.3 ([aff8fc9](https://github.com/muhlba91/node-red-container/commit/aff8fc9131ce105f0eaebc0494fddf6a9c90638b))
+* **deps:** update nodered/node-red docker tag to v3.1.4 ([d4457cd](https://github.com/muhlba91/node-red-container/commit/d4457cd52ced8ddeebe736099dd9c864b2fd9f2c))
+
 ## [4.0.0](https://github.com/muhlba91/node-red-container/compare/v2.0.1...v4.0.0) (2023-10-08)
 
 
