@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [4.0.5](https://github.com/muhlba91/node-red-container/compare/v4.0.4...v4.0.5) (2024-04-12)
+
+
+### Miscellaneous Chores
+
+* **deps:** update nodered/node-red docker tag to v3.1.9 ([502a386](https://github.com/muhlba91/node-red-container/commit/502a386a711c7b6fb3d6a09df4285cba78934756))
+
 ## [4.0.4](https://github.com/muhlba91/node-red-container/compare/v4.0.3...v4.0.4) (2024-03-28)
 
 
