@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [4.0.6](https://github.com/muhlba91/node-red-container/compare/v4.0.5...v4.0.6) (2024-06-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout digest to 0ad4b8f ([0aa2dbe](https://github.com/muhlba91/node-red-container/commit/0aa2dbe2488d269299655f1eefc324a28b38ffe2))
+* **deps:** update actions/checkout digest to 0ad4b8f ([2fd200c](https://github.com/muhlba91/node-red-container/commit/2fd200c0d62d472395a5818c245e6cb1997de34f))
+* **deps:** update actions/checkout digest to 1d96c77 ([23b3caa](https://github.com/muhlba91/node-red-container/commit/23b3caa365a28e973c43ae7e8ea833893c9693bb))
+* **deps:** update actions/checkout digest to 44c2b7a ([db1d65a](https://github.com/muhlba91/node-red-container/commit/db1d65a50b7e959ff3e03a9e100106869907f9d2))
+* **deps:** update actions/checkout digest to 692973e ([725bb3c](https://github.com/muhlba91/node-red-container/commit/725bb3c338402d2ad5b9dee1d39cfe0a33d8ce4a))
+* **deps:** update actions/checkout digest to a5ac7e5 ([12b9eaf](https://github.com/muhlba91/node-red-container/commit/12b9eafb7e4941c2dd8233b268d14085f6ccf230))
+* **deps:** update docker/build-push-action action to v6 ([848f5e9](https://github.com/muhlba91/node-red-container/commit/848f5e956f0751a584c1fe50e7f1287fd3a3acea))
+* **deps:** update nodered/node-red docker tag to v3.1.10 ([371f86f](https://github.com/muhlba91/node-red-container/commit/371f86fc8f2d6189126d35ace0de8a72f48f0c7c))
+* **deps:** update nodered/node-red docker tag to v3.1.11 ([1bce452](https://github.com/muhlba91/node-red-container/commit/1bce4527f964596e69f07ffa60bdd47794c954cd))
+
 ## [4.0.5](https://github.com/muhlba91/node-red-container/compare/v4.0.4...v4.0.5) (2024-04-12)
 
 
