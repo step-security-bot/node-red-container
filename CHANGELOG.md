@@ -1,6 +1,14 @@
 # Changelog
 
 
+## [5.0.3](https://github.com/muhlba91/node-red-container/compare/v5.0.2...v5.0.3) (2024-10-09)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout digest to eef6144 ([48eb443](https://github.com/muhlba91/node-red-container/commit/48eb44363bd7b539a65687dffd31c6a46775f0c7))
+* **deps:** update nodered/node-red docker tag to v4.0.4 ([67540c5](https://github.com/muhlba91/node-red-container/commit/67540c5b32860ae21b24e111d952c67f8c6db00d))
+
 ## [5.0.2](https://github.com/muhlba91/node-red-container/compare/v5.0.1...v5.0.2) (2024-09-17)
 
 
