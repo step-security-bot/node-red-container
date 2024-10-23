@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [5.0.5](https://github.com/muhlba91/node-red-container/compare/v5.0.4...v5.0.5) (2024-10-23)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout digest to 11bd719 ([a01973c](https://github.com/muhlba91/node-red-container/commit/a01973c8c59e41abebcd16d9626b51ff564220b5))
+
 ## [5.0.4](https://github.com/muhlba91/node-red-container/compare/v5.0.3...v5.0.4) (2024-10-10)
 
 
